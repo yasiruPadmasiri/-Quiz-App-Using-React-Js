@@ -1,8 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './style.css'
+import LoadQuiz from './component/Quiz'
 
 ReactDOM.render(
-  <div><h1>asdjkgjga</h1></div>
+  <div><h1>General Knowlegde Quiz</h1>
+  <br>
+  </br>
+  <LoadQuiz></LoadQuiz>
+  
+  </div>
+  
 
 ,document.getElementById("root"))
 

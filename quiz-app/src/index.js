@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './style.css'
 import LoadQuiz from './component/Quiz'
+import Loging from './login'
+import {BrowserRouter as router} from 'react-router-dom'
 
 ReactDOM.render(
   <div><h1>General Knowlegde Quiz</h1>
@@ -9,6 +11,7 @@ ReactDOM.render(
   </br>
   <LoadQuiz></LoadQuiz>
   
+  <Loging></Loging>
   </div>
   
 

@@ -12,7 +12,7 @@ var isSelect=false
     const [questionIndex, setQuestionIndex] = useState(0);
     const [userAnswer,setUserAnswer]=useState(" ");
     const [buttonColor,setCoulor]=useState(
-        {backgroundColor:"green",
+        {backgroundColor:"brown",
         margin:10,
         textAlign:'center'            
         })
@@ -27,6 +27,11 @@ var isSelect=false
     }
 
     function nextquizGo(){
+        setCoulor({
+                backgroundColor:"brown",
+                margin:10,
+                textAlign:'center'      });
+                console.log()
         var newScore=0;
         if(questionIndex < 6){
             quizNumber++;
@@ -50,17 +55,23 @@ var isSelect=false
     function AnswersList(answer,index){
 
         function changecolor(){
+            sessionStorage.setItem("admin","sdkhjgjhgjjgaskjdjk   ");
+            console.log(sessionStorage.getItem("admin")+"asdkhhgjahgjas")
             console.log("clicked answer si "+answer)
             setUserAnswer(answer);
-            setCoulor({backgroundColor:"white"})
+            // setCoulor({
+            //     backgroundColor:"white",
+            //     margin:10,
+            //     textAlign:'center'      });
             console.log("user answer is " +QuizData[questionIndex].answer);
-        
+            console.log(document.getElementById(index));
+            document.getElementById(index).style.background='white';
 
         }
 
         return (
             <div key={index}>
-        <button onClick={changecolor} style={buttonColor} key={index}>{answer}</button>
+        <button onClick={changecolor} id={index} style={buttonColor} key={index}>{answer}</button>
         </div>
        
         )
@@ -85,8 +96,8 @@ var isSelect=false
                   
 
         <div>
-            <button className="btn btn-success" style={{margin:20}} onClick={nextquizGo}>Next Question</button>
             <button className="btn btn-danger" style={{margin:50}} onClick={perviousquiz}>Previous Question</button>
+            <button className="btn btn-success" style={{margin:20}} onClick={nextquizGo}>Next Question</button>
         </div>
          
      </div>)

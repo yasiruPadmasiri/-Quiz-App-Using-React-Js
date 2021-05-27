@@ -31,3 +31,9 @@ h1{
     color:white;
     text-align: center;
 }
+.loginView{
+    margin: 100px;
+    background-color: bisque;
+    padding: 50px;
+    border-radius: 10px;
+}

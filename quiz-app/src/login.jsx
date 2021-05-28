@@ -54,6 +54,7 @@ function Login(){
                     if((user.email==logingValue.email)&&(user.password==logingValue.password)){
                         console.log("oo")
                         if(user.role=="teacher"){
+                            sessionStorage.setItem("role","teacher")
                           setLoginValue(
                               {
                                   ...logingValue,
@@ -65,6 +66,7 @@ function Login(){
                          redirections()
                         }
                         else if(user.role=="student"){
+                            sessionStorage.setItem("role","student")
                             setLoginValue(
                                 {
                                     ...logingValue,
@@ -117,7 +119,22 @@ function Login(){
 
             {logingValue.success==true?
            <div>
-               {logingValue.role=="teacher"?<Teach></Teach>:<LoadQuiz></LoadQuiz>}
+               {logingValue.role=="teacher"?
+               <>
+               <Redirect to="/teacher" />
+               {             console.log("test 1ghfh "+  logingValue.success)}
+              <Teach></Teach>
+               
+       
+               </>
+               :
+               <>
+               <Redirect to="/Quiz" />
+               {             console.log("test 1ghfh "+  logingValue.success)}
+               <LoadQuiz></LoadQuiz>
+               
+       
+               </>}
            </div>
           
                 
@@ -147,4 +164,4 @@ function Login(){
     )
 }
 
-export default Login
+export default Login 

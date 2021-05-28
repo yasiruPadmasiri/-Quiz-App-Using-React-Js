@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './style.css'
+import Headers from './header'
+
 import LoadQuiz from './component/Quiz'
 import Loging from './login'
 import App from './App'
@@ -8,11 +10,12 @@ import {BrowserRouter as router} from 'react-router-dom'
 
 
 
+console.log(sessionStorage.getItem("role"));
 ReactDOM.render(
-  <div><h1>General Knowlegde Quiz</h1>
-  <br>
-  </br>
+  <div>
+  
  
+ <Headers></Headers>
   <App></App>
   {/* <Loging></Loging> */}
   

@@ -2,10 +2,14 @@
 function Headers(){
 
     var Role=sessionStorage.getItem("role");
+    var showHeader=sessionStorage.getItem("Inlogin");
 
 
     return(
+        
         <div>
+            {/* {showHeader==false?<div><h1>zdada</h1>adhagjhgjas</div> :null
+            } */}
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
                 <a class="navbar-brand" href="#">Hela Quizz {Role} </a>

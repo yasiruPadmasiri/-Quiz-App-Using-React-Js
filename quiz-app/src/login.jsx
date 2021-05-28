@@ -1,10 +1,11 @@
 import { useState } from 'react';
 
-// import './style.css'
+import './style.css'
 
 import Teach from './component/Teacher/teacherIndex'
 import axios from 'axios'
 import { Redirect } from 'react-router';
+import {Link} from 'react-router-dom'
 import QuizData from './QuizData';
 import LoadQuiz from'./component/Quiz'
 
@@ -62,6 +63,7 @@ function Login(){
                                   success:true
                               }
                           )
+                          sessionStorage.setItem("Inlogin",false)
                           console.log("oo")
                          redirections()
                         }
@@ -74,6 +76,7 @@ function Login(){
                                     success:true
                                 }
                             )
+                            sessionStorage.setItem("Inlogin",false)
                         }
                     }
                     
@@ -114,8 +117,10 @@ function Login(){
         
       
 
-        <div className="loginView">
-            
+        
+        <div class="login-form">
+            {sessionStorage.setItem("Inlogin",true)}
+            {sessionStorage.setItem("Inlogin",true)}
 
             {logingValue.success==true?
            <div>
@@ -150,12 +155,18 @@ function Login(){
                     <input type="password" onChange={savePassword} class="form-control" id="exampleInputPassword1"></input>
                 </div>
 
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1"></input>
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
+               
+                <div class="form-group">
+                <a onClick={sumbits} class="btn btn-primary btn-block">Submit</a>
 
-                <a onClick={sumbits} class="btn btn-primary">Submit</a>
+                </div>
+        <div class="clearfix">
+                 <label class="pull-left checkbox-inline"><input type="checkbox" /> Remember me</label>
+                 <br></br>
+                 <Link to="/signIn">Sign In</Link>
+                 <br></br>
+                 <Link to="/reset">Forgot Password?</Link>
+        </div> 
             </form>}
         </div>
    

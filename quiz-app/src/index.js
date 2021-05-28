@@ -15,7 +15,7 @@ ReactDOM.render(
   <div>
   
  
- <Headers></Headers>
+ {/* <Headers></Headers> */}
   <App></App>
   {/* <Loging></Loging> */}
   

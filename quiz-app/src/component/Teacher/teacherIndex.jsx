@@ -1,4 +1,5 @@
 import React from 'react';
+import Headers from '../../header'
 
 
 
@@ -6,7 +7,9 @@ function Teach(){
 
     console.log("huttoos");
 return(  <div>
-    <h1>General sdfszdxds Quiz</h1>
+    <Headers></Headers>
+    
+    <h3>adadadada</h3>
    
   
     </div>)

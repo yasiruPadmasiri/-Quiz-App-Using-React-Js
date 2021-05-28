@@ -1,14 +1,20 @@
 import { useState } from 'react';
+
 // import './style.css'
 
+import Teach from './component/Teacher/teacherIndex'
 import axios from 'axios'
-
+import { Redirect } from 'react-router';
+import QuizData from './QuizData';
+import LoadQuiz from'./component/Quiz'
 
 
 function Login(){
     const[logingValue,setLoginValue]=useState({
         email:"",
         password:"gggg",
+        success:false,
+        role:""
     })
     var getLogins;
     const[getLogin,saveLoging]=useState({
@@ -43,26 +49,79 @@ function Login(){
         axios.get("http://localhost:8090/login")
             .then(function(Response){ 
                 getLogins=Response.data
-                console.log("asdjhvja")
-                console.log(getLogins[0])
+                
                 getLogins.forEach(user => {
                     if((user.email==logingValue.email)&&(user.password==logingValue.password)){
-                        console.log("huttoo")
+                        console.log("oo")
+                        if(user.role=="teacher"){
+                          setLoginValue(
+                              {
+                                  ...logingValue,
+                                  role:"teacher",
+                                  success:true
+                              }
+                          )
+                          console.log("oo")
+                         redirections()
+                        }
+                        else if(user.role=="student"){
+                            setLoginValue(
+                                {
+                                    ...logingValue,
+                                    role:"student",
+                                    success:true
+                                }
+                            )
+                        }
                     }
                     
                 });
-                console.log("asdjhvja")
+                
 
             })
-            // console.log("yasiru"+ getLogins);
-            
+
+
+
+          
     }
 
+    
+    function redirections(){
+
+        if(logingValue.success==true&&logingValue.role=="teacher"){
+            console.log("test 1 "+  logingValue.success);
+            return (<>
+                <Redirect to="/Quiz" />
+                {             console.log("test 1ghfh "+  logingValue.success)}
+                <LoadQuiz></LoadQuiz>
+                
+        
+                </>
+
+                
+                
+                )
+            
+        
+        }
+
+
+    }
 
     return(
+        
+      
 
         <div className="loginView">
-            <form >
+            
+
+            {logingValue.success==true?
+           <div>
+               {logingValue.role=="teacher"?<Teach></Teach>:<LoadQuiz></LoadQuiz>}
+           </div>
+          
+                
+                :<form >
                 <div class="mb-3">
                     <label  class="form-label">Email address</label>
                     <input type="email" onChange={saveEmail} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
@@ -80,8 +139,11 @@ function Login(){
                 </div>
 
                 <a onClick={sumbits} class="btn btn-primary">Submit</a>
-            </form>
+            </form>}
         </div>
+   
+
+
     )
 }
 

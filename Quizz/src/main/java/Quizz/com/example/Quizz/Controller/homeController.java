@@ -21,6 +21,13 @@ public class homeController {
 		 return homeservice.findUsers();
 	}
 	
+	@PostMapping("/signIn")
+	public void createAccount(@RequestBody User user) {
+		
+		homeservice.saveUser(user);
+		
+	}
+	
 
 
 }

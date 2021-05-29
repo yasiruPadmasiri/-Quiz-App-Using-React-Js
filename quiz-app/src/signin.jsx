@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useState } from 'react'
 import {Link} from 'react-router-dom'
 
@@ -59,6 +60,16 @@ function SignIn(){
     }
     function sumbits(){
         console.log(signDetails)
+        axios.post("http://localhost:8090/signIn",{
+            userid:0,
+            email:signDetails.email,
+            fname:signDetails.fname,
+            lname:signDetails.lname,
+            password:signDetails.password,
+            role:signDetails.role
+        }).then(function(Response){
+            console.log(Response)
+        })
     }
     return(
         <div>

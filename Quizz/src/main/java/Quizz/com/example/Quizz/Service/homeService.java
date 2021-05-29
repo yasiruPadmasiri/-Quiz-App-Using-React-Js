@@ -17,5 +17,11 @@ public class homeService {
 	public List<User> findUsers() {
 		 return  (List<User>) userrepo.findAll();
 	}
+	
+	public void  saveUser(User user) {
+		userrepo.save(user);
+	}
+	
+	
 
 }

@@ -1,5 +1,7 @@
 package Quizz.com.example.Quizz.Service;
 
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,13 @@ public class TeacherService {
 	public void getdetails() {
 		
 		// TODO Auto-generated method stub
+		
+	}
+
+
+	public List<Classes> getClassesByEmain(String email) {
+		// TODO Auto-generated method stub
+		return  classes.getallclasses(email);
 		
 	}
 	

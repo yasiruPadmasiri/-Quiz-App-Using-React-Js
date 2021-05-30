@@ -1,5 +1,7 @@
 package Quizz.com.example.Quizz.Controller;
 
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +22,13 @@ public class TeacherController {
 		System.out.println("assdasdad");
 		teacher.createClasses(createClass);
 		
+	}
+	
+	
+	@GetMapping("/getClases")
+	public List<Classes> getClass(@RequestParam String email) {
+		
+		return teacher.getClassesByEmain(email);
 	}
 	
 

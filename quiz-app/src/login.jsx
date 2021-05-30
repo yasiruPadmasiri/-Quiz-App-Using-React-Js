@@ -46,8 +46,19 @@ function Login(){
         console.log(logingValue.email + " sssss "+logingValue.password)
     }
 
+    function saveRole(event){
+        setLoginValue({
+            ...logingValue,
+            role:event.target.value
+        })
+
+    }
+
     function sumbits(){
-        axios.get("http://localhost:8090/login")
+
+        if(logingValue.role=="teacher"){
+
+            axios.get("http://localhost:8090/loginTeacher") 
             .then(function(Response){ 
                 getLogins=Response.data
                 
@@ -56,6 +67,7 @@ function Login(){
                         console.log("oo")
                         if(user.role=="teacher"){
                             sessionStorage.setItem("role","teacher")
+                            sessionStorage.setItem("email",user.email)
                           setLoginValue(
                               {
                                   ...logingValue,
@@ -84,6 +96,50 @@ function Login(){
                 
 
             })
+
+        }   // to check after sure these work but  i can optimize this
+        else if(logingValue.role=="student"){
+            axios.get("http://localhost:8090/loginStudent") 
+            .then(function(Response){ 
+                getLogins=Response.data
+                
+                getLogins.forEach(user => {
+                    if((user.email==logingValue.email)&&(user.password==logingValue.password)){
+                        console.log("oo")
+                        if(user.role=="teacher"){
+                            sessionStorage.setItem("role","teacher")
+                            sessionStorage.setItem("email",user.email)
+                          setLoginValue(
+                              {
+                                  ...logingValue,
+                                  role:"teacher",
+                                  success:true
+                              }
+                          )
+                          sessionStorage.setItem("Inlogin",false)
+                          console.log("oo")
+                         redirections()
+                        }
+                        else if(user.role=="student"){
+                            sessionStorage.setItem("role","student")
+                            setLoginValue(
+                                {
+                                    ...logingValue,
+                                    role:"student",
+                                    success:true
+                                }
+                            )
+                            sessionStorage.setItem("Inlogin",false)
+                        }
+                    }
+                    
+                });
+                
+
+            })
+
+        }
+       
 
 
 
@@ -148,6 +204,15 @@ function Login(){
                     <label  class="form-label">Email address</label>
                     <input type="email" onChange={saveEmail} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Role</label>
+                    <select type="text" onChange={saveRole} class="form-control" id="exampleInputPassword1">
+                        <option aria-disabled >Select Role</option>
+                        <option value="teacher">Teacher</option>
+                        <option value="Student">Student</option>
+                    </select>
                 </div>
 
                 <div class="mb-3">

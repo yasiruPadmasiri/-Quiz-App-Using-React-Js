@@ -59,17 +59,35 @@ function SignIn(){
         })
     }
     function sumbits(){
+
+        if(signDetails.role=="teacher"){
+            axios.post("http://localhost:8090/teacherSignIn",{
+                userid:0,
+                email:signDetails.email,
+                fname:signDetails.fname,
+                lname:signDetails.lname,
+                password:signDetails.password,
+                role:signDetails.role
+            }).then(function(Response){
+                console.log(Response)
+            })
+        }
+        else if(signDetails.role=="student"){
+            axios.post("http://localhost:8090/StudentignIn",{
+                userid:0,
+                email:signDetails.email,
+                fname:signDetails.fname,
+                lname:signDetails.lname,
+                password:signDetails.password,
+                role:signDetails.role
+            }).then(function(Response){
+                console.log(Response)
+            })
+
+        }
+
         console.log(signDetails)
-        axios.post("http://localhost:8090/signIn",{
-            userid:0,
-            email:signDetails.email,
-            fname:signDetails.fname,
-            lname:signDetails.lname,
-            password:signDetails.password,
-            role:signDetails.role
-        }).then(function(Response){
-            console.log(Response)
-        })
+       
     }
     return(
         <div>

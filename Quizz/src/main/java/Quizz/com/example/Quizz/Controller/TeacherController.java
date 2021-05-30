@@ -27,7 +27,7 @@ public class TeacherController {
 	
 	@GetMapping("/getClases")
 	public List<Classes> getClass(@RequestParam String email) {
-		
+		System.out.println(email);
 		return teacher.getClassesByEmain(email);
 	}
 	

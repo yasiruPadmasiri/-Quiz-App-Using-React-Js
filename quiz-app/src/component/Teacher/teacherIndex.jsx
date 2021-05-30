@@ -1,6 +1,8 @@
 import React from 'react';
 import Headers from '../../header'
 import TsideBar  from './teacherSidebar'
+
+
 import './css/style.css'
 
 
@@ -12,14 +14,23 @@ return(  <div>
     <Headers></Headers>
     <TsideBar></TsideBar>
    
-    
 
-
-
-    
-   
   
-    </div>)
+    </div>
+
+
+
+    
+    
+    
+    
+    
+    )
+
+
+
+
+
    
     
 }

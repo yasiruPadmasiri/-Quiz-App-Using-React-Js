@@ -1,5 +1,7 @@
 import axios from "axios"
 import { useState } from "react"
+import { Redirect } from "react-router"
+import Teach from "../teacherIndex"
 
 function CreateClass(){
     console.log(sessionStorage.getItem("email"))
@@ -8,7 +10,8 @@ function CreateClass(){
             grade:"",
             className:"",
             subject:"",
-            email:sessionStorage.getItem("email")
+            email:sessionStorage.getItem("email"),
+            isadd:"false",
         }
     )
 
@@ -16,6 +19,7 @@ function CreateClass(){
 
         setClassValue({
             ...classValue,
+            isadd:false,
             grade:event.target.value,
         })
     }
@@ -23,6 +27,7 @@ function CreateClass(){
     function saveSubject(event){
         setClassValue({
             ...classValue,
+            isadd:false,
             subject:event.target.value
         })
 
@@ -30,11 +35,29 @@ function CreateClass(){
     function saveName(event){
         setClassValue({
             ...classValue,
+            isadd:false,
             className:event.target.value
         })
 
     }
     function sumbits(){
+
+        function redirection(){
+            return (<>
+            
+           
+                <Redirect to="/teacher" />
+                 {console.log("ajshgjhgjhgasd")}
+
+                
+                
+        
+                </>
+
+                
+                
+                )
+        }
 
         
         console.log("email is "+classValue.email)
@@ -46,7 +69,14 @@ function CreateClass(){
             email:classValue.email
         }).then(function(Response){
             console.log(Response)
+            
         })
+        setClassValue({
+            ...classValue,
+            isadd:true,
+        })
+        redirection()
+        
 
     }
 
@@ -57,6 +87,8 @@ function CreateClass(){
             </h1>
 
             <div class="login-form">
+            {classValue.isadd==true?<h1 style={{backgroundColor:"gray",color:"green"}}>Class was added successfully</h1>:null}
+
 
                 <form>
                 <div class="mb-3">

@@ -60,7 +60,7 @@ var isSelect=false
             console.log("clicked answer si "+answer)
             setUserAnswer(answer);
             // setCoulor({
-            //     backgroundColor:"white",
+            //     backgroundColor:"white", 
             //     margin:10,
             //     textAlign:'center'      });
             console.log("user answer is " +QuizData[questionIndex].answer);

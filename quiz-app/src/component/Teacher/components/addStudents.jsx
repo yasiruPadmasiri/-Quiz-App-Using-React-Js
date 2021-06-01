@@ -1,27 +1,15 @@
 import axios from "axios"
+import React, { useState } from 'react';
 
 function AddStudents(){
+    var takingClasses=[];
+    // const [clzGrade,setclsGrade]=useState("")
 
 
 
-    function Cards(){
-        return(
-            <div className="col-md-5">
-                <h1>asdasdadadasdadad</h1>
-                <div class="card" style={{width: "18rem"}}>
-  <div class="card-body">
-    <h5 class="card-title">Class name</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Grade</h6>
-    <p class="card-text">subjectName</p>
-    <a href="#" class="card-link">Add Student</a>
-   
-  </div>
-</div>
-            </div>
-        )
-    }
 
     var temail=sessionStorage.getItem("email");
+    
     axios.get("http://localhost:8090/getClases", {
         params: {
           email: temail
@@ -30,21 +18,59 @@ function AddStudents(){
         
     .then(function(Response){
         console.log(Response.data);
+        takingClasses=Response.data;
+        console.log(takingClasses);
+        
+        
     })
 
+
+
+    function Cards(classes,index){
+        console.log("here "+index)
+        console.log(classes.grade)
+        var gradeis=classes.grade
+        // setclsGrade(gradeis)
+        return(
+            
+            <div key={index}>
+                
+               <h2>{gradeis}</h2>
+               <h2>{classes.grade}</h2>
+               
+            </div>
+        )
+    }
+
+
+   
+
+  
+    
+
     return(
+        
         <div>
-            <h1>
-                this is Add Students
-            </h1>
+         
 
-<Cards></Cards>
+         <div>
+             {setTimeout(function() {
 
-
-
-
+                console.log("sadada")
+                console.log(takingClasses)
+                takingClasses.map(Cards)
+                
+                }, 5000)}
+          
+            
+            </div>
 
         </div>
+
+
+
+
+
     )
 }
 export default AddStudents

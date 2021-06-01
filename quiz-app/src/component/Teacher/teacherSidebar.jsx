@@ -6,37 +6,14 @@ import  AboutStudents from './components/aboutStudent'
 import  AddStudents from './components/addStudents'
 import RemoveStudents from './components/removeStudents'
 import YourClass from './components/yourClass'
+import { Redirect } from 'react-router';
+import {Link} from 'react-router-dom'
  
 
 
 function TsideBar(){
     const[clickFunction,setClickFunction]=useState("");
 
-    function createClass(){
-        setClickFunction("createClass");
-    }
-    function Homes(){
-        setClickFunction("Home")
-    }
-    function yourClass(){
-        setClickFunction("yourClass");
-    }
-    function addStudent(){
-        setClickFunction("addStudents");
-    }
-    function removeStudent(){
-        setClickFunction("removeStudent")
-    }
-    function aboutStudents(){
-        setClickFunction("aboutStudents");
-    }
-    function logOut(){
-        setClickFunction("logOut");
-    }
-
-
-
-    
     return(
         <div>
             {/* <h2>teacherSidebar</h2> */}
@@ -58,46 +35,38 @@ function TsideBar(){
 
                     <ul class="list-unstyled components mb-5">
                         <li class="active">
-                            <a href="#" onClick={Homes}><span class="fa fa-home mr-3"></span> Home</a>
+                            <Link to="/teacher" ><span class="fa fa-home mr-3"></span> Home</Link>
                         </li>
                         <li>
-                            <a href="#" onClick={yourClass}><span class="fa fa-download mr-3 notif"></span>Your Classes</a>
+                            <Link to="teacher/Classes"><span class="fa fa-download mr-3 notif"></span>Your Classes</Link>
                             {/* <small class="d-flex align-items-center justify-content-center">5</small> */}
                         </li>
                         <li>
-                            <a href="#" onClick={createClass} ><span class="fa fa-gift mr-3"></span>Create Class</a>
+                            <Link to="/teacher/CreateClass"><span class="fa fa-gift mr-3"></span>Create Class</Link>
                         </li>
                         <li>
-                            <a href="#"onClick={addStudent}><span class="fa fa-trophy mr-3"></span>Add Students</a>
+                            <Link to="teacher/AddStudents"><span class="fa fa-trophy mr-3"></span>Add Students</Link>
                         </li>
                         <li>
-                            <a href="#"onClick={removeStudent}><span class="fa fa-cog mr-3"></span>Remove Students</a>
+                            <Link to="teacher/RemoveStudent" ><span class="fa fa-cog mr-3"></span>Remove Students</Link>
                         </li>
                         <li>
-                            <a href="#"onClick={aboutStudents}><span class="fa fa-support mr-3"></span>About Student </a>
+                            <Link to="teacher/AboutStudent"><span class="fa fa-support mr-3"></span>About Student </Link>
                         </li>
                         <li>
-                            <a href="#" onClick={logOut
-                            }><span class="fa fa-sign-out mr-3"></span> Login Out</a>
+                            <Link to="/" ><span class="fa fa-sign-out mr-3"></span> Login Out</Link>
                         </li>
                 </ul>
 
                 </nav>
 
                 <div id="content" class="p-4 p-md-5 pt-5">
-        <h2 class="mb-4">body</h2>
+        <h2 class="mb-4">Home View</h2>
 
 
-                {clickFunction=="createClass"?
-                <CreateClass></CreateClass>:null
-                }
-                {clickFunction=="Home"?<Home></Home>:null}
-                {clickFunction=="yourClass"?<YourClass></YourClass>:null}
-                {clickFunction=="addStudents"?<AddStudents></AddStudents>:null}
+               
 
-        {/* <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> */}
-      </div>
+        </div>
 
             </div>    
         </div>

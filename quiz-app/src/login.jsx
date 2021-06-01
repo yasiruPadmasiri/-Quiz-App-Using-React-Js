@@ -183,8 +183,8 @@ function Login(){
                {logingValue.role=="teacher"?
                <>
                <Redirect to="/teacher" />
-               {             console.log("test 1ghfh "+  logingValue.success)}
-              <Teach></Teach>
+               {             console.log("test 1 "+  logingValue.success)}
+             
                
        
                </>

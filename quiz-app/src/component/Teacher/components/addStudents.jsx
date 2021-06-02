@@ -1,8 +1,8 @@
 import axios from "axios"
 import React, { useEffect, useState } from 'react';
-import CreateCards from './classCards'
+// import CreateCards from './classCards'
 import {Link} from 'react-router-dom'
-
+import ClassCards from './studentTable'
 
 
 function AddStudents(){
@@ -11,7 +11,7 @@ function AddStudents(){
 
     var url="http://localhost:8090/getClases"
     var temail=sessionStorage.getItem("email");
-    var takingClasses=[];
+    
     var myClasses=[];
     var temail=sessionStorage.getItem("email");
     
@@ -46,31 +46,11 @@ function AddStudents(){
     
     // takingClasses= getmyClasses()
     // console.log(takingClasses)
-    console.log(getmyclasses);
-
-    function Cards(classes,index){
-        console.log("here "+index)
-        console.log(classes.grade)
-        var gradeis=classes.grade
-        // setclsGrade(gradeis)
-        return(    
-            <div key={index}>
-                
-                
-               <h2>{gradeis}</h2>
-               <h2>{classes.grade}</h2>
-               
-            </div>
-        )
-    }
-    ;
+    // console.log(getmyclasses);
     // console.log(takingClasses)
-    return(
-        
-        
+
+    return(        
      <div>
-
-
         <div class="wrapper d-flex align-items-stretch">
                 <nav id="sidebar">
                     <div class="custom-menu">
@@ -113,29 +93,13 @@ function AddStudents(){
                 </nav>
 
         <div id="content" class="p-4 p-md-5 pt-5">
-                    <h2 class="mb-4">Home View</h2>
-                        <h1>
-                            aaa
-                        </h1>
-                        {/* {
-                            console.log(getmyclasses)
-                        }
 
-                    {console.log(takingClasses.length)} */}
-                {getmyclasses.map((classes,index)=>(<div class= "col-md-5" key={index} > 
-                    <div class="card" style={{width: "18rem"}}>
-                            <div class="card-body">
-                                <h5 class="card-title">{classes.classname}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted"> Grade  {classes.grade}  {classes.subject} </h6>
-                                <p class="card-text">teacher,s Email is  {classes.email}</p>
-                                <a href="#" class="card-link">Card link</a>
-                                {/* <a href="#" class="card-link">Another link</a> */}
-                            </div>
-                            </div>
-                    </div>
-                    )
-                    
-                )}
+                <div>
+                        {getmyclasses.map(ClassCards)}
+                </div>
+            
+                            
+                        
                
 
         </div>

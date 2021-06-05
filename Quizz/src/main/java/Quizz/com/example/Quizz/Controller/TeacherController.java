@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import Quizz.com.example.Quizz.Model.Classes;
+import Quizz.com.example.Quizz.Model.LessonsModel;
 import Quizz.com.example.Quizz.Model.StudentClassModel;
 import Quizz.com.example.Quizz.Model.Teacher;
 import Quizz.com.example.Quizz.Service.TeacherService;
@@ -41,6 +42,13 @@ public class TeacherController {
 	public void addStudent(@RequestBody StudentClassModel addstudent) {
 		teacher.addmyStudents(addstudent);
 	}
+	
+	@GetMapping("/getlessons")
+	public List<LessonsModel> getmylessons(@RequestParam Integer classid){
+		return teacher.getclassLessons(classid);
+	}
+	
+	
 	
 
 }

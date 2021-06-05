@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import Quizz.com.example.Quizz.Model.Classes;
+import Quizz.com.example.Quizz.Model.LessonsModel;
 import Quizz.com.example.Quizz.Model.StudentClassModel;
 import Quizz.com.example.Quizz.Repository.Classs;
+import Quizz.com.example.Quizz.Repository.LessonRepository;
 import Quizz.com.example.Quizz.Repository.studentClassRepository;
 
 @Service
@@ -16,9 +18,11 @@ public class TeacherService {
 	@Autowired
 	private Classs classes;
 	
-	
 	@Autowired 
 	private studentClassRepository studentclassrepo;
+	
+	@Autowired
+	private LessonRepository lessonrepo;
 	
 	
 	public void createClasses(Classes createClass) {
@@ -49,6 +53,13 @@ public class TeacherService {
 	public void addmyStudents(StudentClassModel addstudent) {
 		// TODO Auto-generated method stub
 		studentclassrepo.save(addstudent);
+	}
+
+
+	public List<LessonsModel> getclassLessons(Integer classid) {
+		// TODO Auto-generated method stub
+		
+		return  (List<LessonsModel>) lessonrepo.findlessonByclassId(classid);
 	}
 	
 	

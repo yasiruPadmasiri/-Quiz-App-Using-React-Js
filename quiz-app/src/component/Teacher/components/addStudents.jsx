@@ -8,6 +8,7 @@ import ClassCards from './studentTable'
 function AddStudents(){
 
     const[getmyclasses,setmyclasses]=useState([])
+    
 
     var url="http://localhost:8090/getClases"
     var temail=sessionStorage.getItem("email");
@@ -15,8 +16,10 @@ function AddStudents(){
     var myClasses=[];
     var temail=sessionStorage.getItem("email");
     
+
     useEffect(()=>{
 
+        console.log("here use effect")
         async function getmyClasses(){
         var Resp=await axios.get(url, {
             params: {
@@ -31,24 +34,7 @@ function AddStudents(){
         getmyClasses();
 
     },[url]);
-
-
     
-        
-     
-        
-    // .then(function(Response){
-    //     console.log(Response.data);
-    //     takingClasses= Response.data
-    //     console.log(takingClasses);    
-    // })
-
-    
-    // takingClasses= getmyClasses()
-    // console.log(takingClasses)
-    // console.log(getmyclasses);
-    // console.log(takingClasses)
-
     return(        
      <div>
         <div class="wrapper d-flex align-items-stretch">

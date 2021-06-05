@@ -9,6 +9,7 @@ import Teach from './component/Teacher/teacherIndex';
 import SignIn from './signin'
 import CreateClass from '../src/component/Teacher/components/createClass'
 import AddStudents from './component/Teacher/components/addStudents'
+import AddStudentform from './component/Teacher/components/addStudentForm'
 
 
 function App(){
@@ -25,6 +26,7 @@ function App(){
                         <Route path="/teacher/AddStudents"   component={AddStudents} />
                         <Route path="/teacher" exact component={Teach} />
                         <Route path="/signIn" component={SignIn} />
+                        <Route path="/addstuform/:classes" component={AddStudentform} />
                         
                     </Switch>
                 </div>

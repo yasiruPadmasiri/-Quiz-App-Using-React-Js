@@ -5,9 +5,11 @@ import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import Quizz.com.example.Quizz.Model.AnswersModel;
 import Quizz.com.example.Quizz.Model.Classes;
 import Quizz.com.example.Quizz.Model.LessonsModel;
 import Quizz.com.example.Quizz.Model.StudentClassModel;
+import Quizz.com.example.Quizz.Repository.AnswerRepository;
 import Quizz.com.example.Quizz.Repository.Classs;
 import Quizz.com.example.Quizz.Repository.LessonRepository;
 import Quizz.com.example.Quizz.Repository.studentClassRepository;
@@ -23,6 +25,9 @@ public class TeacherService {
 	
 	@Autowired
 	private LessonRepository lessonrepo;
+	
+	@Autowired
+	private AnswerRepository answersrepo ;
 	
 	
 	public void createClasses(Classes createClass) {
@@ -60,6 +65,12 @@ public class TeacherService {
 		// TODO Auto-generated method stub
 		
 		return  (List<LessonsModel>) lessonrepo.findlessonByclassId(classid);
+	}
+	
+	
+	//save answers  to the db
+	public void saveQuestions(AnswersModel answers) {
+		answersrepo.save(answers);
 	}
 	
 	

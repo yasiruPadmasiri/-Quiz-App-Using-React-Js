@@ -12,7 +12,7 @@ public class AnswersModel {
 	private Integer answermodelid;
 	
 	@Column(name="questionid")
-	private Integer questionid;
+	private Integer questionid;// Which quiz
 	
 	@Column(name="questionOne")
 	private String questionOne;
@@ -28,9 +28,14 @@ public class AnswersModel {
 	
 	@Column(name="answer")
 	private Integer answer;
+	
+	@Column(name="quiz")
+	private String quiz;
+	
+	
 
 	public AnswersModel(Integer answermodelid, Integer questionid, String questionOne, String questionTwo,
-			String questionThree, String questionFour,Integer answer) {
+			String questionThree, String questionFour,Integer answer,String quiz) {
 		
 		this.answermodelid = answermodelid;
 		this.questionid = questionid;
@@ -39,6 +44,7 @@ public class AnswersModel {
 		this.questionThree = questionThree;
 		this.questionFour = questionFour;
 		this.answer=answer;
+		this.quiz=quiz;
 	}
 
 	public Integer getAnswer() {

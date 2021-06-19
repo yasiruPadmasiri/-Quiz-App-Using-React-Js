@@ -19,7 +19,7 @@ public class QuestionsModel {
 	private Integer lessonid;
 	
 	@Column(name="question")
-	private String question;
+	private String question;// whitch quiz
 
 	public Integer getQuestionid() {
 		return questionid;

@@ -10,6 +10,7 @@ import SignIn from './signin'
 import CreateClass from '../src/component/Teacher/components/createClass'
 import AddStudents from './component/Teacher/components/addStudents'
 import AddStudentform from './component/Teacher/components/addStudentForm'
+import YourClass from '../src/component/Teacher/components/yourClass'
 
 
 function App(){
@@ -22,11 +23,12 @@ function App(){
                         <Route path="/" exact component={Loging} />
                         <Route path="/Quiz" component={LoadQuiz} />
                         
-                        <Route path="/teacher/CreateClass"   component={CreateClass} />
-                        <Route path="/teacher/AddStudents"   component={AddStudents} />
+                        <Route path="/teacher/CreateClass"  exact component={CreateClass} />
+                        <Route path="/teacher/AddStudents" exact  component={AddStudents} />
                         <Route path="/teacher" exact component={Teach} />
-                        <Route path="/signIn" component={SignIn} />
-                        <Route path="/addstuform/:classes" component={AddStudentform} />
+                        <Route path="/signIn" exact component={SignIn} />
+                        <Route path="/teacher/Classes" exact component={YourClass} />
+                        <Route path="/addstuform/:classes"exact component={AddStudentform} />
                         
                     </Switch>
                 </div>

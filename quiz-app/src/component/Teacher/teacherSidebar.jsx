@@ -37,8 +37,8 @@ function TsideBar(){
                         <li class="active">
                             <Link to="/teacher" ><span class="fa fa-home mr-3"></span> Home</Link>
                         </li>
-                        <li>
-                            <Link to="teacher/Classes"><span class="fa fa-download mr-3 notif"></span>Your Classes</Link>
+                        <li class="active">
+                            <Link to="/teacher/Classes"><span class="fa fa-download mr-3 notif"></span>Your Classes</Link>
                             {/* <small class="d-flex align-items-center justify-content-center">5</small> */}
                         </li>
                         <li>

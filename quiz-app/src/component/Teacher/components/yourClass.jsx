@@ -1,15 +1,65 @@
 import { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom'
+import axios from "axios"
+import MyClassRoom from '../components/ClassRoom'
+
 
 function YourClass(){
+    sessionStorage.setItem("classid",true)
+
+    var url="http://localhost:8090/getClases";
+    var temail=sessionStorage.getItem("email");
 
     const[myset,setmyset]=useState(false)
-    useEffect(()=>{
-        
+    const[myclasses,setclasses]=useState([])
+
+    useEffect(()=>{   
         console.log("render")
+
+        async  function getAllClasses(){
+            var Resp=await axios.get(url, {
+                params: {
+                  email: temail
+                }
+                })
+
+        }
+
+
     },[myset])
 
+    useEffect(()=>{
+        console.log("scnd read")
+    },[temail])
 
+
+
+    function classCards(classes,index){
+        function getclass(){
+
+            sessionStorage.setItem("classid",classes.classid)
+
+        }
+        return(
+            <div>
+                
+        
+            <div key={index} >
+                <div key={index}  class="card" style={{width: "18rem"}}>
+                                <div class="card-body">
+                                    <h5 class="card-title"></h5>
+                                    <h6 class="card-subtitle mb-2 text-muted"> Grade </h6>
+                                    <p class="card-text">teacher,s Email is  </p>
+                                    <button  id={index} onClick={getclass} class="card-link">Add Students</button>
+                                </div>
+                </div>
+                                
+                    
+            </div>
+        
+        </div>
+        )
+    }
 
     
     function clks(){
@@ -72,7 +122,16 @@ function YourClass(){
 
 <button classNam="btn-btn-primary" onClick={clks}>clickhere</button>
 
-{myset==true?<h1>fuck</h1>:<h1>not fuck</h1>}
+{sessionStorage.getItem("classid")==null?
+                
+                <h1>chekin  null</h1> 
+                :
+                <div>
+
+                <MyClassRoom></MyClassRoom>
+
+                </div>
+                }
 
                
 
